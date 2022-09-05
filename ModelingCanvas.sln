@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelingCanvas", "ModelingCanvas\ModelingCanvas.csproj", "{36A55A8B-3996-4C9B-A1E9-1DD9B445C746}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelingCanvas", "ModelingCanvas\ModelingCanvas.csproj", "{36A55A8B-3996-4C9B-A1E9-1DD9B445C746}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelingCanvas.Tests", "ModelingCanvas.Tests\ModelingCanvas.Tests.csproj", "{F4007B97-4A3D-45C6-9F0F-0413D1DA437E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelingCanvas.Domain", "ModelingCanvas.Domain\ModelingCanvas.Domain.csproj", "{4F9C302A-47C8-47A2-A7B4-C477A5321870}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{36A55A8B-3996-4C9B-A1E9-1DD9B445C746}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36A55A8B-3996-4C9B-A1E9-1DD9B445C746}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36A55A8B-3996-4C9B-A1E9-1DD9B445C746}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4007B97-4A3D-45C6-9F0F-0413D1DA437E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4007B97-4A3D-45C6-9F0F-0413D1DA437E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4007B97-4A3D-45C6-9F0F-0413D1DA437E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4007B97-4A3D-45C6-9F0F-0413D1DA437E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F9C302A-47C8-47A2-A7B4-C477A5321870}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F9C302A-47C8-47A2-A7B4-C477A5321870}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F9C302A-47C8-47A2-A7B4-C477A5321870}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F9C302A-47C8-47A2-A7B4-C477A5321870}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
