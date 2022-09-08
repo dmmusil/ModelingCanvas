@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using ModelingCanvas.Data;
+using ModelingCanvas.Areas.Weather;
 using ModelingCanvas.Identity;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,4 +1,4 @@
-namespace ModelingCanvas.Data
+namespace ModelingCanvas.Areas.Weather
 {
     public class WeatherForecast
     {
