@@ -2,15 +2,10 @@ using ModelingCanvas.Domain;
 
 namespace ModelingCanvas.Tests;
 
-public class Tests
+public class LinkingCanvasObjects
 {
-    [SetUp]
-    public void Setup()
-    {
-    }
-
     [Test]
-    public void LinkEventToCommand()
+    public void LinkCommandToEvent()
     {
         var cmd = new Command();
         var @event = new Event();
