@@ -9,11 +9,15 @@ public class LinkingCanvasObjects
     {
         var cmd = new Command();
         var @event = new Event();
-        cmd.Link(@event);
+
+        var link = new CommandToEvent(cmd, @event);
+
+        Assert.That(link.Source, Is.EqualTo(cmd));
+        Assert.That(link.Destination, Is.EqualTo(@event));
 
         Assert.That(cmd.Next, Is.EqualTo(@event));
 
-        cmd.Unlink();
+        cmd.UnlinkNext();
         Assert.That(cmd.Next, Is.Null);
     }
 
@@ -22,11 +26,14 @@ public class LinkingCanvasObjects
     {
         var evt = new Event();
         var readModel = new ReadModel();
-        evt.Link(readModel);
+
+        var link = new EventToReadModel(evt, readModel);
+        Assert.That(link.Source, Is.EqualTo(evt));
+        Assert.That(link.Destination, Is.EqualTo(readModel));
 
         Assert.That(evt.Next, Is.EqualTo(readModel));
 
-        evt.Unlink();
+        evt.UnlinkNext();
         Assert.That(evt.Next, Is.Null);
     }
 
@@ -35,11 +42,14 @@ public class LinkingCanvasObjects
     {
         var auto = new Automation();
         var readModel = new ReadModel();
-        readModel.Link(auto);
+
+        var link = new ReadModelToCommandIssuer(readModel, auto);
+        Assert.That(link.Source, Is.EqualTo(readModel));
+        Assert.That(link.Destination, Is.EqualTo(auto));
 
         Assert.That(readModel.Next, Is.EqualTo(auto));
 
-        readModel.Unlink();
+        readModel.UnlinkNext();
         Assert.That(readModel.Next, Is.Null);
     }
 
@@ -48,11 +58,14 @@ public class LinkingCanvasObjects
     {
         var ui = new UserInterface();
         var readModel = new ReadModel();
-        readModel.Link(ui);
+
+        var link = new ReadModelToCommandIssuer(readModel, ui);
+        Assert.That(link.Source, Is.EqualTo(readModel));
+        Assert.That(link.Destination, Is.EqualTo(ui));
 
         Assert.That(readModel.Next, Is.EqualTo(ui));
 
-        readModel.Unlink();
+        readModel.UnlinkNext();
         Assert.That(readModel.Next, Is.Null);
     }
 
@@ -61,11 +74,14 @@ public class LinkingCanvasObjects
     {
         var cmd = new Command();
         var ui = new UserInterface();
-        ui.Link(cmd);
+
+        var link = new CommandIssuerToCommand(ui, cmd);
+        Assert.That(link.Source, Is.EqualTo(ui));
+        Assert.That(link.Destination, Is.EqualTo(cmd));
 
         Assert.That(ui.Next, Is.EqualTo(cmd));
 
-        ui.Unlink();
+        ui.UnlinkNext();
         Assert.That(ui.Next, Is.Null);
     }
 
@@ -74,11 +90,14 @@ public class LinkingCanvasObjects
     {
         var cmd = new Command();
         var auto = new Automation();
-        auto.Link(cmd);
+
+        var link = new CommandIssuerToCommand(auto, cmd);
+        Assert.That(link.Source, Is.EqualTo(auto));
+        Assert.That(link.Destination, Is.EqualTo(cmd));
 
         Assert.That(auto.Next, Is.EqualTo(cmd));
 
-        auto.Unlink();
+        auto.UnlinkNext();
         Assert.That(auto.Next, Is.Null);
     }
 }
