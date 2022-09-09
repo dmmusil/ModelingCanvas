@@ -100,4 +100,19 @@ public class LinkingCanvasObjects
         auto.UnlinkNext();
         Assert.That(auto.Next, Is.Null);
     }
+
+    [Test]
+    public void UserInterfaceIssuesCommandRecordsEventFlowsToReadModel()
+    {
+        var ui = new UserInterface();
+        var cmd = new Command();
+        var evt = new Event();
+        var readModel = new ReadModel();
+
+        var uiToCmd = new CommandIssuerToCommand(ui, cmd);
+        var cmdToEvt = new CommandToEvent(cmd, evt);
+        var evtToReadModel = new EventToReadModel(evt, readModel);
+
+        Assert.That(readModel, Is.EqualTo(ui?.Next?.Next?.Next));
+    }
 }
