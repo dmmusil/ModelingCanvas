@@ -13,11 +13,20 @@
     <button @onclick="() => _board.Add(new View(Guid.NewGuid()))">
         View
     </button>
+    @if (_board.LinkMode == LinkMode.Active)
+    {
+        <button @onclick="_board.CancelLinkMode">Cancel Link</button>
+    }
 </p>
 
 <p>
     @foreach (var c in _board.Cards)
     {
-        <Card Model="c" OnDelete="() => _board.DeleteCard(c)"/>
+        <Card 
+            Model="c" 
+            OnDelete="() => _board.DeleteCard(c)" 
+            LinkStarted="() => _board.StartLinkMode(c)" 
+            CardToLink="_board.CardToLink" 
+            LinkMode="_board.LinkMode" />
     }
 </p>

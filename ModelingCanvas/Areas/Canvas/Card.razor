@@ -1,6 +1,17 @@
-﻿<div style="border: 1px solid black; padding: 5px; margin: 5px; width: 200px; height: 100px;">
+﻿@using ModelingCanvas.Domain
+<div style="border: 1px solid black; padding: 5px; margin: 5px; width: 200px; height: 100px;">
     <h4>@Model.GetType().Name</h4>
     <button @onclick="OnDelete">X</button>
+
+    @if (LinkMode == LinkMode.Inactive)
+    {
+        <button @onclick="LinkStarted">Link</button>
+    }
+
+    @if (Model.CanLinkFrom(CardToLink))
+    {
+        <button>Accept</button>
+    }
 </div>
 
 
