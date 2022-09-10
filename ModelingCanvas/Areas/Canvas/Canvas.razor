@@ -1,0 +1,23 @@
+﻿@page "/canvas"
+@using ModelingCanvas.Domain
+
+<h3>Canvas - @_board.Id</h3>
+
+<p>
+    <button @onclick="() => _board.Add(new Command(Guid.NewGuid()))">
+        Command
+    </button>
+    <button @onclick="() => _board.Add(new Event(Guid.NewGuid()))">
+        Event
+    </button>
+    <button @onclick="() => _board.Add(new View(Guid.NewGuid()))">
+        View
+    </button>
+</p>
+
+<p>
+    @foreach (var c in _board.Cards)
+    {
+        <Card Model="c" OnDelete="() => _board.DeleteCard(c)"/>
+    }
+</p>
