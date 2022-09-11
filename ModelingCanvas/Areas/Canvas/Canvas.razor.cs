@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Components.Web;
-using ModelingCanvas.Domain;
+﻿using ModelingCanvas.Domain;
 
 namespace ModelingCanvas.Areas.Canvas;
 

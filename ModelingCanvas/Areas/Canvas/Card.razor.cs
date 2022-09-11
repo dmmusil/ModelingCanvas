@@ -8,7 +8,7 @@ public partial class Card
 {
 
     [Parameter]
-    public Domain.Card Model { get; set; }
+    public Domain.Card Model { get; set; } = null!;
 
     [Parameter]
     public EventCallback OnDelete { get; set; }
@@ -35,7 +35,6 @@ public partial class Card
     {
         StartX = obj.ScreenX;
         StartY = obj.ScreenY;
-        Dragged = true;
     }
 
     public bool Dragged { get; set; }
@@ -44,11 +43,12 @@ public partial class Card
     {
         OffsetX += obj.ScreenX - StartX;
         OffsetY += obj.ScreenY - StartY;
+        Dragged = true;
     }
 
     private const string DefaultStyle =
         "border: 1px solid black; padding: 5px; margin: 5px; width: 200px; height: 100px;";
 
     private string Style =>
-        Dragged ? $"{DefaultStyle} position: absolute; left: {OffsetXStyle}; top: {OffsetYStyle};" : DefaultStyle;
+        Dragged ? $"{DefaultStyle} position: relative; left: {OffsetXStyle}; top: {OffsetYStyle};" : DefaultStyle;
 }
