@@ -1,5 +1,5 @@
 ﻿@using ModelingCanvas.Domain
-<div style="border: 1px solid black; padding: 5px; margin: 5px; width: 200px; height: 100px;">
+<div style="@Style">
     <h4>@Model.GetType().Name</h4>
     <button @onclick="OnDelete">X</button>
 
@@ -12,6 +12,8 @@
     {
         <button>Accept</button>
     }
+    <div @ondragstart="OnDragStart" @ondragend="OnDragEnd" draggable="true">Handle</div>
+    @OffsetX, @OffsetY
 </div>
 
 
