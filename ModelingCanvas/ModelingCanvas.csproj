@@ -19,4 +19,12 @@
     <ProjectReference Include="..\ModelingCanvas.Domain\ModelingCanvas.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\Canvas\Link.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\Canvas\Link.razor" />
+  </ItemGroup>
+
 </Project>

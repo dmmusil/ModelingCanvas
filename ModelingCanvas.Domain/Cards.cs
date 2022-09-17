@@ -26,6 +26,9 @@ public abstract record Card(Guid Id)
     }
 
     public void BreakLinkWith(Card card) => _links.RemoveAll(link => link.Source == card || link.Destination == card);
+
+    public double OffsetX { get; set; }
+    public double OffsetY { get; set; }
 }
 
 public record Command(Guid Id) : Card(Id)

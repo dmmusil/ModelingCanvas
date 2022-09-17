@@ -1,0 +1,39 @@
+﻿<div style="border: 1px solid black; width: @(Width-200)px; height: @(Height)px; position: relative; left: @(OffsetX)px; top: @(OffsetY)px">
+    <h3>Link</h3>
+    <button @onclick="OnDelete">x</button>
+</div>
+
+@code {
+
+    [Parameter]
+    public Domain.Link Model { get; set; } = null!;
+
+    [Parameter]
+    public EventCallback OnDelete { get; set; }
+
+    public int Width
+    {
+        get
+        {
+            var src = Model.Source;
+            var dest = Model.Destination;
+            
+            return (int)Math.Abs(src.OffsetX - dest.OffsetX);
+        }
+    }
+
+    public int Height
+    {
+        get
+        {
+            var src = Model.Source;
+            var dest = Model.Destination;
+            
+            return (int)Math.Abs(src.OffsetY - dest.OffsetY);
+        }
+    }
+
+    private int OffsetX => (int)Model.Source.OffsetX + 200;
+    private int OffsetY => (int)Model.Source.OffsetY;
+
+}

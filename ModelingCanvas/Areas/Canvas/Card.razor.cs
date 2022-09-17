@@ -6,6 +6,8 @@ namespace ModelingCanvas.Areas.Canvas;
 
 public partial class Card
 {
+    public const int Width = 200;
+    public const int Height = 100;
 
     [Parameter]
     public Domain.Card Model { get; set; } = null!;
@@ -25,14 +27,14 @@ public partial class Card
     [Parameter]
     public EventCallback OnAcceptLink { get; set; }
 
+    [Parameter]
+    public EventCallback OnDragged { get; set; }
+
     private double StartX { get; set; }
     private double StartY { get; set; }
 
-    private double OffsetX { get; set; }
-    private double OffsetY { get; set; }
-
-    private string OffsetXStyle => $"{(int)OffsetX}px";
-    private string OffsetYStyle => $"{(int)OffsetY}px";
+    private string OffsetXStyle => $"{(int)Model.OffsetX}px";
+    private string OffsetYStyle => $"{(int)Model.OffsetY}px";
 
     private void OnDragStart(DragEventArgs obj)
     {
@@ -44,14 +46,15 @@ public partial class Card
 
     private void OnDragEnd(DragEventArgs obj)
     {
-        OffsetX += obj.ScreenX - StartX;
-        OffsetY += obj.ScreenY - StartY;
+        Model.OffsetX += obj.ScreenX - StartX;
+        Model.OffsetY += obj.ScreenY - StartY;
         Dragged = true;
+        OnDragged.InvokeAsync();
     }
 
-    private const string DefaultStyle =
-        "border: 1px solid black; border-radius: 6px; padding: 5px; margin: 5px; width: 200px; height: 100px;";
+    private static readonly string DefaultStyle =
+        $"border: 1px solid black; border-radius: 6px; padding: 5px; margin: 5px; width: {Width}px; height: {Height}px;";
 
     private string Style =>
-        Dragged ? $"{DefaultStyle} position: relative; left: {OffsetXStyle}; top: {OffsetYStyle};" : DefaultStyle;
+        Dragged ? $"{DefaultStyle} position: absolute; left: {OffsetXStyle}; top: {OffsetYStyle};" : DefaultStyle;
 }
