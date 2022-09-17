@@ -1,5 +1,5 @@
 ﻿@using ModelingCanvas.Domain
-<div style="@Style">
+<div style="@Style" @ondragstart="OnDragStart" @ondragend="OnDragEnd" draggable="true">
     <h4>@Model.GetType().Name</h4>
     <button @onclick="OnDelete">X</button>
 
@@ -10,10 +10,10 @@
 
     @if (Model.CanLinkFrom(CardToLink))
     {
-        <button>Accept</button>
+        <button @onclick="OnAcceptLink">Accept</button>
     }
-    <div @ondragstart="OnDragStart" @ondragend="OnDragEnd" draggable="true">Handle</div>
-    @OffsetX, @OffsetY
+    
+    <div>@Model.Links.Count</div>
 </div>
 
 

@@ -13,7 +13,8 @@ public class BoardTests
 
         board.Add(cmd);
         board.Add(evt);
-        board.LinkBetween(cmd, evt);
+        board.StartLinkMode(cmd);
+        board.Link(evt);
 
         Assert.That(board.AreLinked(cmd, evt));
 
@@ -31,7 +32,8 @@ public class BoardTests
 
         board.Add(view);
         board.Add(evt);
-        board.LinkBetween( evt, view);
+        board.StartLinkMode(evt);
+        board.Link(view);
 
         Assert.That(board.AreLinked( evt, view));
 
@@ -49,7 +51,8 @@ public class BoardTests
 
         board.Add(view);
         board.Add(evt);
-        board.LinkBetween(evt, view);
+        board.StartLinkMode(evt);
+        board.Link(view);
 
         Assert.That(board.AreLinked(evt, view));
 

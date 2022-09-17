@@ -22,6 +22,9 @@ public partial class Card
     [Parameter]
     public LinkMode LinkMode { get; set; }
 
+    [Parameter]
+    public EventCallback OnAcceptLink { get; set; }
+
     private double StartX { get; set; }
     private double StartY { get; set; }
 
@@ -47,7 +50,7 @@ public partial class Card
     }
 
     private const string DefaultStyle =
-        "border: 1px solid black; padding: 5px; margin: 5px; width: 200px; height: 100px;";
+        "border: 1px solid black; border-radius: 6px; padding: 5px; margin: 5px; width: 200px; height: 100px;";
 
     private string Style =>
         Dragged ? $"{DefaultStyle} position: relative; left: {OffsetXStyle}; top: {OffsetYStyle};" : DefaultStyle;

@@ -4,13 +4,13 @@
 <h3>Canvas - @_board.Id</h3>
 
 <p>
-    <button @onclick="() => _board.Add(new Command(Guid.NewGuid()))">
+    <button @onclick="() => _board.Add(new Command(NewGuid()))">
         Command
     </button>
-    <button @onclick="() => _board.Add(new Event(Guid.NewGuid()))">
+    <button @onclick="() => _board.Add(new Event(NewGuid()))">
         Event
     </button>
-    <button @onclick="() => _board.Add(new View(Guid.NewGuid()))">
+    <button @onclick="() => _board.Add(new View(NewGuid()))">
         View
     </button>
     @if (_board.LinkMode == LinkMode.Active)
@@ -19,7 +19,7 @@
     }
 </p>
 
-<p style="width: 100%; height: 1000px;">
+<p style="width: 100%; height: 100vh;">
     @foreach (var c in _board.Cards)
     {
         <Card 
@@ -27,6 +27,15 @@
             OnDelete="() => _board.DeleteCard(c)" 
             LinkStarted="() => _board.StartLinkMode(c)" 
             CardToLink="_board.CardToLink" 
-            LinkMode="_board.LinkMode" />
+            LinkMode="_board.LinkMode" 
+            OnAcceptLink="() => _board.Link(c)" />
     }
+    
 </p>
+@foreach (var link in _board.Links)
+{
+    <div>
+        Source: @link.Source
+        Destination: @link.Destination;
+    </div>
+}
